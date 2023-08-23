@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const title = book.title;
                 const author = book.author_name ? book.author_name[0] : "Unknown Author";
                 const year = book.first_publish_year ? book.first_publish_year : "Unknown Year";
-                return `Title: ${title}<br>Author: ${author}<br>Year: ${year}`;
+                const ebookLink = book.ebook_count_i > 0 ? `<a href="https://openlibrary.org${book.key}/ebooks">${book.ebook_count_i} Ebook(s)</a>` : "No Ebook Available";
+                return `Title: ${title}<br>Author: ${author}<br>Year: ${year}<br>${ebookLink}`;
             } else {
                 return "Book not found.";
             }
@@ -45,3 +46,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
     displayPastMessages();
 });
+
